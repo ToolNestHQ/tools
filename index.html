@@ -16,7 +16,7 @@
         body {
             margin: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #060813; /* أساس داكن جداً سينمائي */
+            background-color: #060813;
             color: var(--text-pure);
             min-height: 100vh;
             display: flex;
@@ -27,7 +27,6 @@
             position: relative;
         }
 
-        /* --- تأثير أمواج الألوان المتحركة الفخمة في الخلفية --- */
         .color-bg-glow {
             position: absolute;
             top: 0;
@@ -45,8 +44,7 @@
             width: 500px;
             height: 500px;
             background: radial-gradient(circle, #1e3a8a 0%, transparent 70%);
-            top: -10%;
-            left: -10%;
+            top: -10%; left: -10%;
             animation: wave1 20s infinite alternate ease-in-out;
         }
 
@@ -55,22 +53,13 @@
             width: 600px;
             height: 600px;
             background: radial-gradient(circle, #4c1d95 0%, transparent 70%);
-            bottom: -20%;
-            right: -10%;
+            bottom: -20%; right: -10%;
             animation: wave2 25s infinite alternate ease-in-out;
         }
 
-        @keyframes wave1 {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(100px, 50px) scale(1.2); }
-        }
+        @keyframes wave1 { 0% { transform: translate(0, 0); } 100% { transform: translate(100px, 50px); } }
+        @keyframes wave2 { 0% { transform: translate(0, 0); } 100% { transform: translate(-80px, -60px); } }
 
-        @keyframes wave2 {
-            0% { transform: translate(0, 0) scale(1.1); }
-            100% { transform: translate(-80px, -60px) scale(0.9); }
-        }
-
-        /* حاوية الأدوات تجمع الكروت جنب بعض وتتجاوب مع الجوال */
         .tools-grid {
             display: flex;
             flex-wrap: wrap;
@@ -84,7 +73,6 @@
             z-index: 2;
         }
 
-        /* كروت الزجاج الشفاف الفخمة الموحدة */
         .glass-card {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
@@ -107,44 +95,23 @@
             transform: translateY(-8px);
             border-color: rgba(255, 255, 255, 0.18);
             background: rgba(255, 255, 255, 0.06);
-            box-shadow: 0 50px 120px rgba(0, 0, 0, 0.6);
         }
 
         .card-icon {
             font-size: 55px;
-            color: var(--text-pure);
             margin-bottom: 22px;
-            opacity: 0.95;
-            transition: transform 0.4s ease;
-        }
-
-        .glass-card:hover .card-icon {
-            transform: scale(1.08);
         }
 
         .title-ar {
-            margin: 0;
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--text-pure);
-            line-height: 1.2;
+            margin: 0; font-size: 24px; font-weight: 700; display: block;
         }
 
         .title-en {
-            margin: 6px 0 16px 0;
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--text-pure);
-            direction: ltr;
-            display: block;
-            opacity: 0.8;
+            margin: 6px 0 16px 0; font-size: 18px; font-weight: 600; display: block; opacity: 0.8;
         }
 
         .glass-card p {
-            color: var(--text-dim);
-            margin: 0;
-            font-size: 14px;
-            line-height: 1.6;
+            color: var(--text-dim); margin: 0; font-size: 14px; line-height: 1.6;
         }
     </style>
 </head>
@@ -156,7 +123,7 @@
     </div>
 
     <div class="tools-grid">
-        
+        <!-- كرت يفتح صفحة الباركود المستقلة -->
         <a href="qr.html" class="glass-card">
             <div class="card-icon"><i class="fa-solid fa-qrcode"></i></div>
             <span class="title-ar">صانع الباركود</span>
@@ -164,17 +131,18 @@
             <p>أنشئ رموز QR مخصصة لروابطك ونصوصك بسهولة وبأعلى دقة</p>
         </a>
 
+        <!-- كرت يفتح صفحة حاسبة العمر المستقلة -->
         <a href="age.html" class="glass-card">
             <div class="card-icon"><i class="fa-solid fa-calculator"></i></div>
             <span class="title-ar">حاسبة العمر</span>
             <span class="title-en">(Age Calculator)</span>
             <p>احسب عمرك بالتفصيل بالسنوات، الأشهر، والأيام بلمحة عين</p>
         </a>
-
     </div>
 
 </body>
 </html>
+
 
 
 
