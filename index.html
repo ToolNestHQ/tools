@@ -43,12 +43,9 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 600px; /* تقليص العرض ليناسب أداة واحدة بشكل أنيق */
             margin: 0 auto;
             padding: 0 20px 60px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
             box-sizing: border-box;
             width: 100%;
         }
@@ -57,7 +54,7 @@
             background-color: var(--bg-card);
             border: 1px solid #334155;
             border-radius: 20px;
-            padding: 30px;
+            padding: 40px 30px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -73,21 +70,21 @@
         }
 
         .card-icon {
-            font-size: 40px;
+            font-size: 50px;
             color: var(--accent);
             margin-bottom: 20px;
         }
 
         .card h3 {
-            margin: 0 0 10px 0;
-            font-size: 20px;
+            margin: 0 0 12px 0;
+            font-size: 22px;
         }
 
         .card p {
             color: var(--text-muted);
             margin: 0;
-            font-size: 14px;
-            line-height: 1.5;
+            font-size: 15px;
+            line-height: 1.6;
         }
 
         footer {
@@ -109,19 +106,12 @@
 
     <div class="container">
         
-        <!-- كرت أداة الباركود المربوط بالصفحة الجديدة -->
+        <!-- كرت أداة الباركود المربوط بالصفحة المستقلة المخصصة لها فقط -->
         <a href="qr.html" class="card">
             <div class="card-icon"><i class="fa-solid fa-qrcode"></i></div>
             <h3>صانع الباركود (QR Code)</h3>
             <p>أنشئ رموز QR مخصصة لروابطك ونصوصك بسهولة وبأعلى جودة</p>
         </a>
-
-        <!-- كرت الأداة القادمة (كمثال) -->
-        <div class="card" style="opacity: 0.6; cursor: not-allowed;">
-            <div class="card-icon"><i class="fa-solid fa-file-image"></i></div>
-            <h3>أداة ضغط الصور</h3>
-            <p>قريباً.. تصغير حجم الصور مع الحفاظ على جودتها الكاملة</p>
-        </div>
 
     </div>
 
@@ -131,4 +121,3 @@
 
 </body>
 </html>
-
