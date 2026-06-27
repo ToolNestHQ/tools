@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-dark: #030712; /* أسود فضائي عميق */
-            --card-bg: #0b0f19; /* رمادي داكن جداً للكرت */
-            --neon-cyan: #00f2fe; /* أزرق سيبراني مضيء */
-            --neon-purple: #4facfe; /* متدرج إلكتروني */
+            --bg-dark: #030712;
+            --card-bg: #0b0f19;
+            --neon-cyan: #00f2fe;
+            --neon-purple: #4facfe;
             --text-pure: #ffffff;
             --text-dim: #9ca3af;
         }
@@ -29,7 +29,6 @@
             position: relative;
         }
 
-        /* زر الرجوع للرئيسية بستايل سيبراني هادئ */
         .back-btn {
             position: absolute;
             top: 25px;
@@ -61,10 +60,8 @@
             align-items: center;
             padding: 20px;
             box-sizing: border-box;
-            position: relative;
         }
 
-        /* كرت بحدود مضيئة متحركة */
         .age-card {
             background: var(--card-bg);
             border-radius: 24px;
@@ -78,7 +75,6 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* تأثير خط التوهج النيوني المحيط بالكرت */
         .age-card::before {
             content: '';
             position: absolute;
@@ -104,130 +100,43 @@
             text-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
         }
 
-        h2 {
-            margin: 0 0 10px 0;
-            font-size: 24px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
+        h2 { margin: 0 0 10px 0; font-size: 24px; font-weight: 700; }
+        .subtitle { color: var(--text-dim); font-size: 14px; margin-bottom: 30px; }
+        .input-group { margin-bottom: 25px; text-align: right; }
+        label { display: block; font-size: 13px; margin-bottom: 10px; color: var(--text-dim); }
 
-        .subtitle {
-            color: var(--text-dim);
-            font-size: 14px;
-            margin-bottom: 30px;
-        }
-
-        .input-group {
-            margin-bottom: 25px;
-            text-align: right;
-        }
-
-        label {
-            display: block;
-            font-size: 13px;
-            margin-bottom: 10px;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* حقل الإدخال السيبراني */
         input[type="date"] {
-            width: 100%;
-            padding: 15px;
-            background: #111827;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 14px;
-            color: #ffffff;
-            font-size: 16px;
-            box-sizing: border-box;
-            outline: none;
-            text-align: center;
-            transition: all 0.3s ease;
+            width: 100%; padding: 15px; background: #111827;
+            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 14px;
+            color: #ffffff; font-size: 16px; box-sizing: border-box;
+            outline: none; text-align: center;
         }
 
-        input[type="date"]:focus {
-            border-color: var(--neon-cyan);
-            box-shadow: 0 0 15px rgba(0, 242, 254, 0.15);
-            background: #1f2937;
-        }
+        input[type="date"]:focus { border-color: var(--neon-cyan); }
 
-        /* زر الحساب المضيء */
         .calc-btn {
-            width: 100%;
-            padding: 15px;
+            width: 100%; padding: 15px;
             background: linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-purple) 100%);
-            border: none;
-            border-radius: 14px;
-            color: #030712;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            border: none; border-radius: 14px; color: #030712;
+            font-size: 16px; font-weight: 700; cursor: pointer;
             box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
         }
 
-        .calc-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 30px rgba(0, 242, 254, 0.5);
-            opacity: 0.95;
-        }
-
-        /* كروت عرض النتيجة النيونية */
         .result-box {
-            margin-top: 35px;
-            padding-top: 25px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            display: none;
-            animation: fadeInUp 0.4s ease forwards;
+            margin-top: 35px; padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08); display: none;
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .result-title {
-            font-size: 14px;
-            color: var(--text-dim);
-            margin-bottom: 15px;
-        }
-
-        .result-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-        }
-
-        .result-item {
-            background: #111827;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 15px 5px;
-            transition: all 0.3s ease;
-        }
-
-        .result-item:hover {
-            border-color: rgba(0, 242, 254, 0.3);
-            box-shadow: 0 0 10px rgba(0, 242, 254, 0.05);
-        }
-
-        .result-num {
-            font-size: 26px;
-            font-weight: 800;
-            color: var(--neon-cyan);
-            margin-bottom: 5px;
-            text-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
-        }
-
-        .result-label {
-            font-size: 12px;
-            color: var(--text-dim);
-        }
+        .result-title { font-size: 14px; color: var(--text-dim); margin-bottom: 15px; }
+        .result-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        .result-item { background: #111827; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 15px 5px; }
+        .result-num { font-size: 26px; font-weight: 800; color: var(--neon-cyan); margin-bottom: 5px; }
+        .result-label { font-size: 12px; color: var(--text-dim); }
     </style>
 </head>
 <body>
 
+    <!-- يرجع للصفحة الرئيسية المنفصلة تلقائياً -->
     <a href="index.html" class="back-btn">
         <i class="fa-solid fa-arrow-right"></i> الرئيسية
     </a>
@@ -236,30 +145,21 @@
         <div class="age-card">
             <div class="icon-header"><i class="fa-solid fa-microchip"></i></div>
             <h2>حاسبة العمر الذكية</h2>
-            <div class="subtitle">حلل بيانات ميلادك واحسب عمرك بالثانية والدقيقة ولمح البصر</div>
+            <div class="subtitle">احسب عمرك بالسنة والشهر واليوم بلمحة عين</div>
 
             <div class="input-group">
-                <label for="birthdate">أدخل تاريخ ميلادك الموقر:</label>
+                <label for="birthdate">أدخل تاريخ ميلادك:</label>
                 <input type="date" id="birthdate" required>
             </div>
 
-            <button class="calc-btn" onclick="calculateAge()">ابدأ التحليل المباشر</button>
+            <button class="calc-btn" onclick="calculateAge()">ابدأ الحساب</button>
 
             <div class="result-box" id="resultBox">
-                <div class="result-title">نتائج تحليل العمر الحالي:</div>
+                <div class="result-title">نتائج العمر الحالي:</div>
                 <div class="result-grid">
-                    <div class="result-item">
-                        <div class="result-num" id="years">-</div>
-                        <div class="result-label">سنة</div>
-                    </div>
-                    <div class="result-item">
-                        <div class="result-num" id="months">-</div>
-                        <div class="result-label">شهر</div>
-                    </div>
-                    <div class="result-item">
-                        <div class="result-num" id="days">-</div>
-                        <div class="result-label">يوم</div>
-                    </div>
+                    <div class="result-item"><div class="result-num" id="years">-</div><div class="result-label">سنة</div></div>
+                    <div class="result-item"><div class="result-num" id="months">-</div><div class="result-label">شهر</div></div>
+                    <div class="result-item"><div class="result-num" id="days">-</div><div class="result-label">يوم</div></div>
                 </div>
             </div>
         </div>
@@ -268,36 +168,21 @@
     <script>
         function calculateAge() {
             const birthdateInput = document.getElementById('birthdate').value;
-            if (!birthdateInput) {
-                alert('الرجاء اختيار تاريخ الميلاد أولاً!');
-                return;
-            }
-
-            const birthDate = new Date(birthdateInput);
-            const today = new Date();
-
+            if (!birthdateInput) { alert('الرجاء اختيار تاريخ الميلاد أولاً!'); return; }
+            const birthDate = new Date(birthdateInput); const today = new Date();
             let years = today.getFullYear() - birthDate.getFullYear();
             let months = today.getMonth() - birthDate.getMonth();
             let days = today.getDate() - birthDate.getDate();
-
-            if (days < 0) {
-                months--;
-                const previousMonth = new Date(today.getFullYear(), today.getMonth(), 0).getDate();
-                days += previousMonth;
-            }
-
-            if (months < 0) {
-                years--;
-                months += 12;
-            }
-
+            if (days < 0) { months--; const prevMonth = new Date(today.getFullYear(), today.getMonth(), 0).getDate(); days += prevMonth; }
+            if (months < 0) { years--; months += 12; }
             document.getElementById('years').innerText = years;
             document.getElementById('months').innerText = months;
             document.getElementById('days').innerText = days;
-            document.getElementById('resultBox').style.style.display = 'block';
+            document.getElementById('resultBox').style.display = 'block';
         }
     </script>
 
 </body>
 </html>
+
 
