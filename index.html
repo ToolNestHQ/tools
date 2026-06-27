@@ -7,129 +7,106 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --glass-bg: rgba(255, 255, 255, 0.03); /* خلفية زجاجية بالكامل */
-            --glass-border: rgba(255, 255, 255, 0.08); /* حدود ناعمة جداً */
-            --text-pure: #ffffff; /* أبيض ناصع للنصوص والأيقونات */
+            --glass-bg: rgba(255, 255, 255, 0.05); /* خلفية بيضاء شفافة */
+            --glass-border: rgba(255, 255, 255, 0.1); /* حدود ناعمة جداً */
+            --text-pure: #ffffff; /* أبيض ناصع */
             --text-dim: rgba(255, 255, 255, 0.6); /* أبيض خافت للوصف */
-            --body-bg: linear-gradient(135deg, #090d16, #111827, #070a10); /* خلفية داكنة عميقة جداً لبروز الزجاج */
+            --body-bg: #0b0f19; /* خلفية داكنة سادة لبروز تأثير الضباب */
         }
 
         body {
             margin: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--body-bg);
-            background-size: 400% 400%;
-            animation: gradientBG 12s ease infinite;
+            background-color: var(--body-bg);
             color: var(--text-pure);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            align-items: center;
             overflow-x: hidden;
         }
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
         .glass-container {
-            flex: 1;
+            width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 40px 20px;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
-        @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); }
-            100% { transform: translateY(0px); }
-        }
-
-        /* كرت الزجاج الشفاف النقي */
+        /* كرت الزجاج الشفاف الضبابي الفخم */
         .glass-card {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
+            backdrop-filter: blur(25px); /* تأثير ضبابي قوي للزجاج */
+            -webkit-backdrop-filter: blur(25px);
             border-radius: 24px;
-            padding: 50px 30px;
+            padding: 45px 30px;
             text-align: center;
             text-decoration: none;
             color: inherit;
             display: block;
-            max-width: 450px;
+            max-width: 400px;
             width: 100%;
             box-sizing: border-box;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-            animation: floating 6s ease-in-out infinite;
-            position: relative;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
         }
 
-        /* توهج أبيض ناعم جداً عند التمرير */
         .glass-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-5px);
             border-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 30px 60px rgba(255, 255, 255, 0.05);
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.08);
         }
 
-        /* الأيقونة بيضاء نقية مع توهج أبيض خفيف */
         .card-icon {
-            font-size: 65px;
+            font-size: 60px;
             color: var(--text-pure);
             margin-bottom: 25px;
-            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
-            transition: transform 0.5s ease;
+            opacity: 0.95;
         }
 
-        .glass-card:hover .card-icon {
-            transform: scale(1.05);
-        }
-
-        /* عنوان أبيض ناصع مريح للعين */
-        .glass-card h3 {
-            margin: 0 0 12px 0;
+        /* تنسيق العنوان العربي */
+        .title-ar {
+            margin: 0;
             font-size: 26px;
             font-weight: 700;
             color: var(--text-pure);
-            letter-spacing: 0.5px;
+            line-height: 1.2;
         }
 
-        /* وصف ناعم */
+        /* تنسيق العنوان الإنجليزي المرتب تحت العربي مباشرة */
+        .title-en {
+            margin: 8px 0 20px 0;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--text-pure);
+            direction: ltr;
+            display: block;
+        }
+
+        /* وصف الأداة */
         .glass-card p {
             color: var(--text-dim);
             margin: 0;
             font-size: 15px;
             line-height: 1.6;
         }
-
-        footer {
-            padding: 25px;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.3);
-            font-size: 13px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
     </style>
 </head>
 <body>
 
     <div class="glass-container">
-        
         <a href="qr.html" class="glass-card">
             <div class="card-icon"><i class="fa-solid fa-qrcode"></i></div>
-            <h3>صانع الباركود (QR Code)</h3>
+            <span class="title-ar">صانع الباركود</span>
+            <span class="title-en">(QR Code)</span>
             <p>أنشئ رموز QR مخصصة لروابطك ونصوصك بسهولة وبأعلى دقة</p>
         </a>
-
     </div>
-
-    <footer>
-        &copy; 2026 ToolNestHQ. جميع الحقوق محفوظة.
-    </footer>
 
 </body>
 </html>
+
