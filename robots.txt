@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://toolnesthq.com/sitemap.xml
