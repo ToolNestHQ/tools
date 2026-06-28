@@ -10,14 +10,13 @@
             --glass-bg: rgba(255, 255, 255, 0.03);
             --glass-border: rgba(255, 255, 255, 0.08);
             --text-pure: #ffffff;
-            --text-dim: rgba(255, 255, 255, 0.5);
-            --body-bg: #050811; /* أسود أعمق عشان تبرز الخطوط */
+            --text-dim: rgba(255, 255, 255, 0.55);
         }
 
         body {
             margin: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--body-bg);
+            background-color: #060813; /* أساس داكن جداً */
             color: var(--text-pure);
             min-height: 100vh;
             display: flex;
@@ -28,43 +27,50 @@
             position: relative;
         }
 
-        /* --- تأثير الخطوط المتحركة الفخمة في الخلفية --- */
-        .bg-lines {
+        /* --- تأثير أمواج الألوان المتحركة الفخمة والناعمة في الخلفية --- */
+        .color-bg-glow {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: 1;
-            background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-            background-size: 50px 50px; /* مقاس المربعات */
-            background-position: center;
-            animation: moveGrid 20s linear infinite; /* حركة مستمرة ناعمة */
+            overflow: hidden;
+            filter: blur(120px); /* تنعيم الألوان عشان تطلع مثل الضباب */
+            opacity: 0.4; /* هادئة وغير مزعجة للعين */
         }
 
-        /* أنيميشن تحريك شبكة الخطوط ببطء */
-        @keyframes moveGrid {
-            0% {
-                transform: translateY(0) translateX(0);
-            }
-            100% {
-                transform: translateY(50px) translateX(50px);
-            }
-        }
-
-        /* تأثير إضاءة متوهجة ناعمة خلف الكرت تدور ببطء */
-        .bg-glow {
+        /* الكتلة الملونة الأولى (أزرق نيوني فخم) */
+        .color-blob-1 {
             position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 2;
-            pointer-events: none;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, #1e3a8a 0%, transparent 70%);
+            top: -10%;
+            left: -10%;
+            animation: wave1 20s infinite alternate ease-in-out;
+        }
+
+        /* الكتلة الملونة الثانية (بنفسجي غامق ملكي) */
+        .color-blob-2 {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, #4c1d95 0%, transparent 70%);
+            bottom: -20%;
+            right: -10%;
+            animation: wave2 25s infinite alternate ease-in-out;
+        }
+
+        /* حركة الأمواج الناعمة */
+        @keyframes wave1 {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(100px, 50px) scale(1.2); }
+        }
+
+        @keyframes wave2 {
+            0% { transform: translate(0, 0) scale(1.1); }
+            100% { transform: translate(-80px, -60px) scale(0.9); }
         }
 
         .glass-container {
@@ -75,15 +81,15 @@
             padding: 20px;
             box-sizing: border-box;
             position: relative;
-            z-index: 3; /* فوق الخطوط والخلفية */
+            z-index: 2; /* فوق الألوان */
         }
 
-        /* كرت الزجاج الشفاف الضبابي الفخم المستقل */
+        /* كرت الزجاج الشفاف اللي يعكس الألوان وراه */
         .glass-card {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
-            backdrop-filter: blur(30px); /* زيادة الضباب عشان يعزل الخطوط وراه */
-            -webkit-backdrop-filter: blur(30px);
+            backdrop-filter: blur(35px); /* ضباب قوي يدمج الألوان وراه بشكل ساحر */
+            -webkit-backdrop-filter: blur(35px);
             border-radius: 28px;
             padding: 50px 30px;
             text-align: center;
@@ -98,7 +104,7 @@
         }
 
         .glass-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-6px);
             border-color: rgba(255, 255, 255, 0.18);
             background: rgba(255, 255, 255, 0.06);
             box-shadow: 0 50px 120px rgba(0, 0, 0, 0.6);
@@ -109,11 +115,6 @@
             color: var(--text-pure);
             margin-bottom: 25px;
             opacity: 0.95;
-            transition: transform 0.4s ease;
-        }
-
-        .glass-card:hover .card-icon {
-            transform: scale(1.05); /* حركة خفيفة للأيقونة عند اللمس */
         }
 
         .title-ar {
@@ -122,7 +123,6 @@
             font-weight: 700;
             color: var(--text-pure);
             line-height: 1.2;
-            letter-spacing: 0.5px;
         }
 
         .title-en {
@@ -132,7 +132,6 @@
             color: var(--text-pure);
             direction: ltr;
             display: block;
-            opacity: 0.9;
         }
 
         .glass-card p {
@@ -145,12 +144,13 @@
 </head>
 <body>
 
-    <!-- عناصر الخلفية المتحركة والمضيئة -->
-    <div class="bg-lines"></div>
-    <div class="bg-glow"></div>
+    <!-- الألوان المائعة والمتحركة في الخلفية -->
+    <div class="color-bg-glow">
+        <div class="color-blob-1"></div>
+        <div class="color-blob-2"></div>
+    </div>
 
     <div class="glass-container">
-        <!-- كرت أداة الباركود المستقل -->
         <a href="qr.html" class="glass-card">
             <div class="card-icon"><i class="fa-solid fa-qrcode"></i></div>
             <span class="title-ar">صانع الباركود</span>
