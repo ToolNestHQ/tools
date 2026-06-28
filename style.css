@@ -196,3 +196,180 @@
 ‏    background:var(--primary-light);
 
 }
+/* ==========================================================
+‏   NAVBAR
+========================================================== */
+
+‏#navbar{
+
+‏    position:fixed;
+
+‏    top:0;
+
+‏    left:0;
+
+‏    width:100%;
+
+‏    z-index:var(--z-navbar);
+
+‏    backdrop-filter:blur(18px);
+
+‏    background:rgba(5,8,22,.55);
+
+‏    border-bottom:1px solid var(--border);
+
+}
+
+‏.navbar{
+
+‏    height:var(--navbar-height);
+
+‏    display:flex;
+
+‏    align-items:center;
+
+‏    justify-content:space-between;
+
+}
+
+‏.logo{
+
+‏    display:flex;
+
+‏    align-items:center;
+
+‏    gap:12px;
+
+‏    font-size:1.5rem;
+
+‏    font-weight:700;
+
+}
+
+‏.logo-icon{
+
+‏    color:var(--accent);
+
+‏    font-size:1.8rem;
+
+‏    text-shadow:var(--glow-medium);
+
+}
+
+‏.logo-text{
+
+‏    color:#fff;
+
+}
+
+‏.nav-links{
+
+‏    display:flex;
+
+‏    gap:35px;
+
+}
+
+‏.nav-links a{
+
+‏    color:var(--text-secondary);
+
+‏    font-weight:500;
+
+‏    position:relative;
+
+‏    transition:.3s;
+
+}
+
+‏.nav-links a:hover{
+
+‏    color:#fff;
+
+}
+
+‏.nav-links a::after{
+
+‏    content:"";
+
+‏    position:absolute;
+
+‏    left:0;
+
+‏    bottom:-8px;
+
+‏    width:0;
+
+‏    height:2px;
+
+‏    background:var(--primary);
+
+‏    transition:.3s;
+
+}
+
+‏.nav-links a:hover::after{
+
+‏    width:100%;
+
+}
+
+‏.nav-actions{
+
+‏    display:flex;
+
+‏    align-items:center;
+
+‏    gap:15px;
+
+}
+
+‏.language-btn{
+
+‏    padding:10px 18px;
+
+‏    border-radius:999px;
+
+‏    border:1px solid var(--border);
+
+‏    background:rgba(255,255,255,.05);
+
+‏    color:#fff;
+
+‏    transition:.3s;
+
+}
+
+‏.language-btn:hover{
+
+‏    background:rgba(59,130,246,.15);
+
+‏    box-shadow:var(--glow-small);
+
+}
+
+‏.github-btn{
+
+‏    padding:11px 24px;
+
+‏    border-radius:999px;
+
+‏    background:var(--primary);
+
+‏    color:#fff;
+
+‏    font-weight:600;
+
+‏    transition:.3s;
+
+}
+
+‏.github-btn:hover{
+
+‏    background:var(--primary-light);
+
+‏    transform:translateY(-2px);
+
+‏    box-shadow:var(--glow-medium);
+
+}
