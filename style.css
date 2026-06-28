@@ -1,1 +1,135 @@
+/* ===========================
+   ToolNestHQ
+   Global Style
+=========================== */
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#070B17;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+/* خلفية متحركة */
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+width:700px;
+
+height:700px;
+
+background:#6d28d9;
+
+filter:blur(180px);
+
+opacity:.20;
+
+top:-250px;
+
+left:-250px;
+
+animation:move1 12s ease-in-out infinite alternate;
+
+z-index:-2;
+
+}
+
+body::after{
+
+content:"";
+
+position:fixed;
+
+width:650px;
+
+height:650px;
+
+background:#2563eb;
+
+filter:blur(180px);
+
+opacity:.18;
+
+bottom:-250px;
+
+right:-250px;
+
+animation:move2 14s ease-in-out infinite alternate;
+
+z-index:-2;
+
+}
+
+@keyframes move1{
+
+from{
+
+transform:translate(0,0);
+
+}
+
+to{
+
+transform:translate(120px,80px);
+
+}
+
+}
+
+@keyframes move2{
+
+from{
+
+transform:translate(0,0);
+
+}
+
+to{
+
+transform:translate(-100px,-60px);
+
+}
+
+}
+
+a{
+
+text-decoration:none;
+
+color:white;
+
+}
+
+img{
+
+max-width:100%;
+
+display:block;
+
+}
+
+.container{
+
+width:90%;
+
+max-width:1300px;
+
+margin:auto;
+
+}
