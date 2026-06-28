@@ -3,43 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToolnestHQ | جميع الأدوات في مكان واحد</title>
+    <title>ToolnestHQ | تجربة رقمية فاخرة</title>
     <style>
-        :root { --bg: #070a13; --accent: #3b82f6; --text: #ffffff; }
-        body { background: var(--bg); color: var(--text); font-family: sans-serif; padding: 20px; }
-        .nav { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center; }
-        button { padding: 12px 18px; cursor: pointer; border-radius: 10px; background: #1e293b; color: white; border: 1px solid #334155; transition: 0.3s; }
-        button:hover { background: var(--accent); }
-        .tool-section { display: none; padding: 25px; background: rgba(255,255,255,0.03); border-radius: 20px; max-width: 600px; margin: auto; }
+        :root {
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+            --accent: #3b82f6;
+            --text: #f8fafc;
+        }
+        body { 
+            background: radial-gradient(circle at top right, #1e293b, #0f172a, #020617);
+            color: var(--text); font-family: 'Segoe UI', sans-serif;
+            margin: 0; padding: 20px; min-height: 100vh;
+        }
+        .container { max-width: 600px; margin: auto; }
+        .hero { text-align: center; margin-bottom: 40px; }
+        .hero h1 { font-size: 2.5rem; background: linear-gradient(to right, #60a5fa, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        .nav { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 30px; }
+        button { 
+            background: var(--glass); border: 1px solid var(--border);
+            color: #94a3b8; padding: 12px 5px; border-radius: 16px; cursor: pointer;
+            transition: 0.4s; font-size: 0.85rem; font-weight: 600;
+        }
+        button:hover, button.active { background: var(--accent); color: white; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3); }
+
+        .tool-section { 
+            display: none; background: var(--glass); backdrop-filter: blur(15px);
+            border: 1px solid var(--border); border-radius: 30px; padding: 40px;
+            animation: fadeIn 0.5s ease;
+        }
         .active { display: block; }
-        input, textarea { width: 100%; padding: 12px; margin: 10px 0; background: #111; color: white; border: 1px solid #333; border-radius: 8px; box-sizing: border-box; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        input { 
+            width: 100%; padding: 15px; margin: 15px 0; background: rgba(0,0,0,0.3);
+            border: 1px solid var(--border); border-radius: 15px; color: white; font-size: 1rem;
+            box-sizing: border-box;
+        }
     </style>
 </head>
 <body>
 
-    <h1 style="text-align:center;">ToolnestHQ</h1>
-    <div class="nav">
-        <button onclick="show('pwd')">كلمات السر</button>
-        <button onclick="show('qr')">الباركود</button>
-        <button onclick="show('conv')">المحول</button>
-        <button onclick="show('age')">العمر</button>
-        <button onclick="show('wts')">واتساب</button>
-        <button onclick="show('text')">النصوص</button>
-        <button onclick="show('disc')">الخصم</button>
+    <div class="container">
+        <header class="hero">
+            <h1>ToolnestHQ</h1>
+            <p style="color: #64748b;">أدواتك بأسلوب عصري</p>
+        </header>
+
+        <div class="nav">
+            <button onclick="show('pwd', this)">كلمات السر</button>
+            <button onclick="show('qr', this)">الباركود</button>
+            <button onclick="show('conv', this)">المحول</button>
+            <button onclick="show('age', this)">العمر</button>
+            <button onclick="show('wts', this)">واتساب</button>
+            <button onclick="show('text', this)">النصوص</button>
+            <button onclick="show('disc', this)">الخصم</button>
+        </div>
+
+        <div id="pwd" class="tool-section active"><h3>🔑 مولد كلمات السر</h3><input type="text" placeholder="كلمة السر..."></div>
+        <div id="qr" class="tool-section"><h3>📱 صانع الباركود</h3><input type="text" placeholder="الرابط..."></div>
+        <div id="conv" class="tool-section"><h3>🔄 محول الوحدات</h3><input type="text" placeholder="القيمة..."></div>
+        <div id="age" class="tool-section"><h3>⏳ حاسبة العمر</h3><input type="date"></div>
+        <div id="wts" class="tool-section"><h3>💬 رابط واتساب</h3><input type="text" placeholder="رقم الجوال..."></div>
+        <div id="text" class="tool-section"><h3>📝 عداد النصوص</h3><input type="text" placeholder="اكتب شيئاً..."></div>
+        <div id="disc" class="tool-section"><h3>💰 حاسبة الخصم</h3><input type="number" placeholder="السعر..."></div>
     </div>
 
-    <div id="pwd" class="tool-section active"><h3>🔑 مولد كلمات السر</h3><input type="text" placeholder="كلمة السر ستظهر هنا..."></div>
-    <div id="qr" class="tool-section"><h3>📱 صانع الباركود</h3><input type="text" placeholder="أدخل الرابط..."></div>
-    <div id="conv" class="tool-section"><h3>🔄 محول الوحدات</h3><input type="text" placeholder="القيمة..."></div>
-    <div id="age" class="tool-section"><h3>⏳ حاسبة العمر</h3><input type="date"></div>
-    <div id="wts" class="tool-section"><h3>💬 رابط واتساب</h3><input type="text" placeholder="رقم الجوال..."></div>
-    <div id="text" class="tool-section"><h3>📝 عداد النصوص</h3><textarea placeholder="اكتب نصك هنا..."></textarea></div>
-    <div id="disc" class="tool-section"><h3>💰 حاسبة الخصم</h3><input type="number" placeholder="السعر الأصلي..."></div>
-
     <script>
-        function show(id) {
+        function show(id, btn) {
             document.querySelectorAll('.tool-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('button').forEach(b => b.classList.remove('active'));
             document.getElementById(id).classList.add('active');
+            btn.classList.add('active');
         }
     </script>
 </body>
