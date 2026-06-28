@@ -432,3 +432,16 @@ font-size:32px;
 }
 
 }
+.top-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: black;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none;
+  z-index: 999;
+}
