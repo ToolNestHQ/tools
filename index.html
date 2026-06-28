@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>المنصة</title>
+    
+    <!-- خطوط جوجل الاحترافية -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- ربط ملف التصميم الذي سننشئه لاحقاً -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- مكتبة GSAP للأنيميشن العالمي -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+</head>
+<body>
+    <!-- طبقات الخلفية التي سنعطيها تأثيرات سينمائية لاحقاً -->
+    <div class="noise-overlay"></div>
+    <div class="ambient-light"></div>
+
+    <main class="app-wrapper">
+        <!-- الشريط العلوي -->
+        <header class="glass-header">
+            <h1 class="brand-title">عبدالله<span>.</span></h1>
+        </header>
+
+        <!-- مساحة العرض الرئيسية -->
+        <section class="dynamic-content" id="main-stage">
+            <div class="welcome-screen">
+                <h2 class="hero-text">أدوات ذكية.<br>بتصميم يليق بك.</h2>
+                <p class="sub-text">تجربة مستخدم تفاعلية تتجاوز المألوف.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- ربط ملف الجافا سكريبت الذي سننشئه لاحقاً -->
+    <script src="script.js" defer></script>
+</body>
+</html>
