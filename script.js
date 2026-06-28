@@ -1,42 +1,58 @@
-// ننتظر حتى يتم تحميل الصفحة بالكامل لنبدأ السحر
+/* ==========================================================================
+   محرك الحركة والتفاعل لـ ToolNestHQ
+   ========================================================================== */
+
 document.addEventListener("DOMContentLoaded", () => {
-    
-    // إنشاء خط زمني (Timeline) لربط الحركات ببعضها بتسلسل سينمائي
+    // 1. نظام التحريك السينمائي عند تحميل الصفحة (Intro Animation)
     const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
 
-    // 1. دخول الشريط العلوي (النافيجيشن) من الأعلى
-    tl.from(".glass-header", {
-        y: -100, // ينزل من فوق
-        opacity: 0,
-        duration: 1.2
-    })
-    
-    // 2. ظهور النص الرئيسي (كلمة بكلمة أو ككتلة واحدة بحركة بطيئة من الأسفل)
-    .from(".hero-text", {
-        y: 50,
-        opacity: 0,
-        duration: 1.5,
-        skewY: 5, // ميلان خفيف يعطي فخامة
-    }, "-=0.5") // يبدأ قبل أن تنتهي حركة الشريط العلوي بنصف ثانية
-    
-    // 3. ظهور النص الفرعي بسلاسة
-    .from(".sub-text", {
-        y: 30,
+    tl.from(".main-glass-container", {
         opacity: 0,
         duration: 1.5
-    }, "-=1"); // تداخل في التوقيت لحركة أسرع وأكثر انسيابية
+    })
+    .from(".brand-title", {
+        y: 20,
+        opacity: 0,
+        duration: 1,
+    }, "-=1")
+    .from(".welcome-text", {
+        y: 50,
+        opacity: 0,
+        duration: 1.2,
+        skewY: 2,
+    }, "-=0.8");
 
-    // تأثير حركة الماوس على الإضاءة الخلفية (Ambient Light)
-    // يجعل الإضاءة تتحرك ببطء عكس اتجاه الماوس ليعطي إحساس بالعمق (3D)
+    // 2. نظام التفاعل مع حركة الماوس (Mouse Parallax Effect)
+    // يجعل التموجات الخلفية تنجذب برقة نحو حركة الماوس لتعطي عمقاً 3D
+    const backgroundWaves = document.querySelector(".fluid-background");
+
     document.addEventListener("mousemove", (e) => {
-        const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
-        const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
-        
-        gsap.to(".ambient-light", {
-            x: xAxis,
-            y: yAxis,
-            duration: 1,
-            ease: "power1.out"
+        const { clientX, clientY } = e;
+        const xPercent = (clientX / window.innerWidth - 0.5) * 20;
+        const yPercent = (clientY / window.innerHeight - 0.5) * 20;
+
+        gsap.to(backgroundWaves, {
+            x: -xPercent,
+            y: -yPercent,
+            duration: 2,
+            ease: "power2.out"
+        });
+    });
+
+    // 3. نظام "توليد الحياة" (إضافة تفاعلية)
+    // عند الضغط في أي مكان، تظهر نبضة ضوئية في مكان الضغط
+    document.addEventListener("click", (e) => {
+        const ripple = document.createElement("div");
+        ripple.className = "click-ripple";
+        ripple.style.left = `${e.clientX}px`;
+        ripple.style.top = `${e.clientY}px`;
+        document.body.appendChild(ripple);
+
+        gsap.to(ripple, {
+            scale: 4,
+            opacity: 0,
+            duration: 1.5,
+            onComplete: () => ripple.remove()
         });
     });
 });
