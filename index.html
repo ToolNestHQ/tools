@@ -3,79 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToolnestHQ | تجربة رقمية فاخرة</title>
+    <title>ToolnestHQ | الواجهة الجبارة</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        :root {
-            --glass: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.1);
-            --accent: #3b82f6;
-            --text: #f8fafc;
-        }
-        body { 
-            background: radial-gradient(circle at top right, #1e293b, #0f172a, #020617);
-            color: var(--text); font-family: 'Segoe UI', sans-serif;
-            margin: 0; padding: 20px; min-height: 100vh;
-        }
-        .container { max-width: 600px; margin: auto; }
-        .hero { text-align: center; margin-bottom: 40px; }
-        .hero h1 { font-size: 2.5rem; background: linear-gradient(to right, #60a5fa, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        
-        .nav { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 30px; }
-        button { 
-            background: var(--glass); border: 1px solid var(--border);
-            color: #94a3b8; padding: 12px 5px; border-radius: 16px; cursor: pointer;
-            transition: 0.4s; font-size: 0.85rem; font-weight: 600;
-        }
-        button:hover, button.active { background: var(--accent); color: white; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3); }
-
-        .tool-section { 
-            display: none; background: var(--glass); backdrop-filter: blur(15px);
-            border: 1px solid var(--border); border-radius: 30px; padding: 40px;
-            animation: fadeIn 0.5s ease;
-        }
-        .active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        
-        input { 
-            width: 100%; padding: 15px; margin: 15px 0; background: rgba(0,0,0,0.3);
-            border: 1px solid var(--border); border-radius: 15px; color: white; font-size: 1rem;
-            box-sizing: border-box;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;500;700&display=swap');
+        body { font-family: 'Cairo', sans-serif; background: #020617; color: white; overflow-x: hidden; }
+        .glass { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); }
+        .glow { box-shadow: 0 0 20px rgba(59, 130, 246, 0.2); }
+        .nav-btn { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .nav-btn:hover { transform: scale(1.05); background: #3b82f6; }
+        .tool-box { animation: slideUp 0.6s ease-out; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body>
+<body class="p-4 md:p-10">
 
-    <div class="container">
-        <header class="hero">
-            <h1>ToolnestHQ</h1>
-            <p style="color: #64748b;">أدواتك بأسلوب عصري</p>
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-12">
+            <h1 class="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500 mb-2">ToolnestHQ</h1>
+            <p class="text-slate-400">القوة التقنية في متناول يدك</p>
         </header>
 
-        <div class="nav">
-            <button onclick="show('pwd', this)">كلمات السر</button>
-            <button onclick="show('qr', this)">الباركود</button>
-            <button onclick="show('conv', this)">المحول</button>
-            <button onclick="show('age', this)">العمر</button>
-            <button onclick="show('wts', this)">واتساب</button>
-            <button onclick="show('text', this)">النصوص</button>
-            <button onclick="show('disc', this)">الخصم</button>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+            <button onclick="show('pwd')" class="nav-btn glass p-4 rounded-2xl">🔑 كلمات السر</button>
+            <button onclick="show('qr')" class="nav-btn glass p-4 rounded-2xl">📱 الباركود</button>
+            <button onclick="show('conv')" class="nav-btn glass p-4 rounded-2xl">🔄 المحول</button>
+            <button onclick="show('age')" class="nav-btn glass p-4 rounded-2xl">⏳ العمر</button>
+            <button onclick="show('wts')" class="nav-btn glass p-4 rounded-2xl">💬 واتساب</button>
+            <button onclick="show('text')" class="nav-btn glass p-4 rounded-2xl">📝 النصوص</button>
+            <button onclick="show('disc')" class="nav-btn glass p-4 rounded-2xl col-span-2">💰 حاسبة الخصم</button>
         </div>
 
-        <div id="pwd" class="tool-section active"><h3>🔑 مولد كلمات السر</h3><input type="text" placeholder="كلمة السر..."></div>
-        <div id="qr" class="tool-section"><h3>📱 صانع الباركود</h3><input type="text" placeholder="الرابط..."></div>
-        <div id="conv" class="tool-section"><h3>🔄 محول الوحدات</h3><input type="text" placeholder="القيمة..."></div>
-        <div id="age" class="tool-section"><h3>⏳ حاسبة العمر</h3><input type="date"></div>
-        <div id="wts" class="tool-section"><h3>💬 رابط واتساب</h3><input type="text" placeholder="رقم الجوال..."></div>
-        <div id="text" class="tool-section"><h3>📝 عداد النصوص</h3><input type="text" placeholder="اكتب شيئاً..."></div>
-        <div id="disc" class="tool-section"><h3>💰 حاسبة الخصم</h3><input type="number" placeholder="السعر..."></div>
+        <div id="display-area" class="glass glow p-8 rounded-3xl min-h-[300px] flex items-center justify-center border-t-4 border-blue-500">
+            <div id="pwd" class="tool-box hidden w-full">
+                <h3 class="text-2xl mb-4 font-bold">مولد كلمات السر</h3>
+                <input class="w-full bg-black/50 p-4 rounded-xl border border-white/10" placeholder="اضغط توليد...">
+            </div>
+            <div id="wts" class="tool-box hidden w-full">
+                <h3 class="text-2xl mb-4 font-bold">رابط واتساب</h3>
+                <input class="w-full bg-black/50 p-4 rounded-xl border border-white/10" placeholder="أدخل الرقم هنا...">
+            </div>
+            <div id="welcome" class="text-center text-slate-500">
+                <h2 class="text-2xl">اختر أداة للبدء</h2>
+            </div>
+        </div>
     </div>
 
     <script>
-        function show(id, btn) {
-            document.querySelectorAll('.tool-section').forEach(s => s.classList.remove('active'));
-            document.querySelectorAll('button').forEach(b => b.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
-            btn.classList.add('active');
+        function show(id) {
+            document.getElementById('welcome').classList.add('hidden');
+            document.querySelectorAll('.tool-box').forEach(t => t.classList.add('hidden'));
+            const selected = document.getElementById(id);
+            selected.classList.remove('hidden');
         }
     </script>
 </body>
