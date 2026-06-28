@@ -293,3 +293,142 @@ background:rgba(255,255,255,.08);
 transform:translateY(-6px);
 
 }
+/* ===========================
+   TOOLS SECTION
+=========================== */
+
+.tools-section{
+    padding:100px 0;
+}
+
+.section-title{
+    text-align:center;
+    font-size:42px;
+    font-weight:800;
+    margin-bottom:15px;
+}
+
+.section-title span{
+    color:#7c3aed;
+}
+
+.section-subtitle{
+    text-align:center;
+    color:#94a3b8;
+    margin-bottom:60px;
+    font-size:18px;
+}
+
+.tools-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.tool-card{
+    position:relative;
+    overflow:hidden;
+    background:rgba(255,255,255,.05);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:24px;
+    padding:35px;
+    transition:.4s;
+}
+
+.tool-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(135deg,
+    rgba(124,58,237,.18),
+    rgba(37,99,235,.08));
+    opacity:0;
+    transition:.4s;
+}
+
+.tool-card:hover::before{
+    opacity:1;
+}
+
+.tool-card:hover{
+    transform:translateY(-10px);
+    border-color:#7c3aed;
+    box-shadow:0 20px 50px rgba(124,58,237,.25);
+}
+
+.tool-icon{
+    width:70px;
+    height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:18px;
+    background:linear-gradient(135deg,#7c3aed,#2563eb);
+    font-size:28px;
+    margin-bottom:25px;
+}
+
+.tool-card h3{
+    font-size:24px;
+    margin-bottom:10px;
+}
+
+.tool-card p{
+    color:#94a3b8;
+    line-height:1.8;
+    margin-bottom:25px;
+}
+
+.tool-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    color:white;
+    font-weight:600;
+}
+
+.tool-card:hover .tool-btn{
+    transform:translateX(-5px);
+}
+
+.tool-card:hover .tool-icon{
+    transform:rotate(10deg) scale(1.08);
+    transition:.4s;
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+
+footer{
+    margin-top:120px;
+    padding:35px;
+    text-align:center;
+    color:#94a3b8;
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:42px;
+}
+
+.hero p{
+font-size:17px;
+}
+
+.menu{
+display:none;
+}
+
+.section-title{
+font-size:32px;
+}
+
+}
