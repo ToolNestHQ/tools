@@ -3,47 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToolnestHQ | بوابتك للأدوات الذكية</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <title>ToolnestHQ | جميع الأدوات في مكان واحد</title>
     <style>
-        :root {
-            --bg: #070a13;
-            --accent: #3b82f6;
-            --text: #ffffff;
-            --muted: #64748b;
-        }
-        body { background: var(--bg); color: var(--text); font-family: 'Cairo', sans-serif; margin: 0; padding: 0; min-height: 100vh; }
-        .hero { text-align: center; padding: 60px 20px; }
-        h1 { font-size: 2.8rem; margin-bottom: 10px; }
-        h1 span { color: var(--accent); }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1100px; width: 90%; margin: 0 auto 80px; }
-        .card { background: rgba(255,255,255,0.03); padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); text-decoration: none; color: white; transition: 0.3s; }
-        .card:hover { transform: translateY(-5px); border-color: var(--accent); background: rgba(59, 130, 246, 0.05); }
-        .card h3 { font-size: 1.3rem; margin-bottom: 10px; }
-        .card p { color: var(--muted); font-size: 0.95rem; }
+        :root { --bg: #070a13; --accent: #3b82f6; --text: #ffffff; }
+        body { background: var(--bg); color: var(--text); font-family: sans-serif; padding: 20px; }
+        .nav { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center; }
+        button { padding: 12px 18px; cursor: pointer; border-radius: 10px; background: #1e293b; color: white; border: 1px solid #334155; transition: 0.3s; }
+        button:hover { background: var(--accent); }
+        .tool-section { display: none; padding: 25px; background: rgba(255,255,255,0.03); border-radius: 20px; max-width: 600px; margin: auto; }
+        .active { display: block; }
+        input, textarea { width: 100%; padding: 12px; margin: 10px 0; background: #111; color: white; border: 1px solid #333; border-radius: 8px; box-sizing: border-box; }
     </style>
 </head>
 <body>
 
-    <header class="hero">
-        <h1>مرحباً بك في <span>ToolnestHQ</span></h1>
-        <p>مجموعة الأدوات التي تحتاجها يومياً في مكان واحد</p>
-    </header>
+    <h1 style="text-align:center;">ToolnestHQ</h1>
+    <div class="nav">
+        <button onclick="show('pwd')">كلمات السر</button>
+        <button onclick="show('qr')">الباركود</button>
+        <button onclick="show('conv')">المحول</button>
+        <button onclick="show('age')">العمر</button>
+        <button onclick="show('wts')">واتساب</button>
+        <button onclick="show('text')">النصوص</button>
+        <button onclick="show('disc')">الخصم</button>
+    </div>
 
-    <main class="grid">
-        <a href="whatsapp-link.html" class="card">
-            <h3>💬 رابط واتساب المباشر</h3>
-            <p>أنشئ رابطاً لبدء المحادثة فوراً بدون حفظ الأرقام.</p>
-        </a>
-        <a href="text-counter.html" class="card">
-            <h3>📝 عداد ومحلل النصوص</h3>
-            <p>تحليل دقيق للكلمات، الحروف، وزمن القراءة.</p>
-        </a>
-        <a href="discount.html" class="card">
-            <h3>💰 حاسبة الخصم والضريبة</h3>
-            <p>احسب السعر النهائي بعد الخصومات والضرائب بدقة.</p>
-        </a>
-    </main>
+    <div id="pwd" class="tool-section active"><h3>🔑 مولد كلمات السر</h3><input type="text" placeholder="كلمة السر ستظهر هنا..."></div>
+    <div id="qr" class="tool-section"><h3>📱 صانع الباركود</h3><input type="text" placeholder="أدخل الرابط..."></div>
+    <div id="conv" class="tool-section"><h3>🔄 محول الوحدات</h3><input type="text" placeholder="القيمة..."></div>
+    <div id="age" class="tool-section"><h3>⏳ حاسبة العمر</h3><input type="date"></div>
+    <div id="wts" class="tool-section"><h3>💬 رابط واتساب</h3><input type="text" placeholder="رقم الجوال..."></div>
+    <div id="text" class="tool-section"><h3>📝 عداد النصوص</h3><textarea placeholder="اكتب نصك هنا..."></textarea></div>
+    <div id="disc" class="tool-section"><h3>💰 حاسبة الخصم</h3><input type="number" placeholder="السعر الأصلي..."></div>
 
+    <script>
+        function show(id) {
+            document.querySelectorAll('.tool-section').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+        }
+    </script>
 </body>
 </html>
