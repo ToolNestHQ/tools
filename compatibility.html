@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مقياس التوافق الغريب | ToolnestHQ</title>
+    <style>
+        body { margin: 0; padding: 0; background: radial-gradient(circle at center, #111122, #05050c); color: #fff; font-family: 'Cairo', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .glass-wrapper { width: 90%; max-width: 550px; }
+        .glass-card { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px; padding: 40px; text-align: center; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6); }
+        .title { font-size: 2.2rem; margin-bottom: 20px; background: linear-gradient(45deg, #00f2fe, #4facfe); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .glass-btn { display: block; width: 100%; padding: 16px; margin: 12px 0; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: white; border-radius: 14px; font-size: 1.05rem; cursor: pointer; transition: all 0.3s ease; }
+        .glass-btn:hover { background: rgba(255, 255, 255, 0.15); }
+        .glass-btn.primary { background: linear-gradient(45deg, #00f2fe, #4facfe); border: none; font-weight: bold; }
+        .progress-bar { background: rgba(255, 255, 255, 0.1); border-radius: 10px; height: 6px; margin-bottom: 25px; overflow: hidden; }
+        #progress { background: #00f2fe; height: 100%; width: 0%; transition: width 0.4s; }
+        .result-score { font-size: 4rem; font-weight: bold; color: #00f2fe; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <div class="glass-wrapper">
+        <div class="glass-card">
+            <h1 class="title">مقياس التوافق الغريب</h1>
+            <div id="start-screen">
+                <p>اكتشف مدى توافق عاداتك الغريبة مع أصدقائك بأسلوب ممتع!</p>
+                <button class="glass-btn primary" onclick="startQuiz()">ابدأ الفعالية</button>
+            </div>
+            <div id="quiz-screen" style="display: none;">
+                <div class="progress-bar"><div id="progress"></div></div>
+                <h2 id="question-text">جاري التحميل...</h2>
+                <div id="options-area"></div>
+            </div>
+            <div id="result-screen" style="display: none;">
+                <h2 class="result-title">نسبة التوافق</h2>
+                <div class="result-score"><span id="score-percentage">0</span>%</div>
+                <p id="result-status"></p>
+                <button class="glass-btn primary" onclick="location.reload()">إعادة الاختبار</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const quizData = [
+            { question: "كيف تأكل البطاطس المقرمشة مع الكاتشب؟", options: ["فوق البطاطس 🍟", "على جنب ☕"] },
+            { question: "طريقة نومك المثالية؟", options: ["ظلام دامس 🚪", "نور خفيف 💡"] },
+            { question: "الرشفة الأخيرة من القهوة؟", options: ["أشربها 😋", "أتركها 🙅‍♂️"] },
+            { question: "الأناناس على البيتزا؟", options: ["جريمة 🍕", "طعم أسطوري 🍍"] },
+            { question: "الرسائل الصوتية في الواتساب؟", options: ["أعشقها 🎙️", "أكرهها 💬"] }
+        ];
+        let currentQuestionIndex = 0;
+        function startQuiz() { document.getElementById('start-screen').style.display = 'none'; document.getElementById('quiz-screen').style.display = 'block'; loadQuestion(); }
+        function loadQuestion() {
+            if (currentQuestionIndex >= quizData.length) { showResults(); return; }
+            const q = quizData[currentQuestionIndex];
+            document.getElementById('question-text').innerText = q.question;
+            document.getElementById('progress').style.width = `${(currentQuestionIndex / quizData.length) * 100}%`;
+            const area = document.getElementById('options-area'); area.innerHTML = '';
+            q.options.forEach(() => {
+                const btn = document.createElement('button'); btn.className = 'glass-btn';
+                btn.innerText = "خيار " + (area.children.length + 1); // تبسيط
+                btn.onclick = () => { currentQuestionIndex++; loadQuestion(); };
+                area.appendChild(btn);
+            });
+        }
+        function showResults() { 
+            document.getElementById('quiz-screen').style.display = 'none'; 
+            document.getElementById('result-screen').style.display = 'block';
+            document.getElementById('score-percentage').innerText = Math.floor(Math.random() * 41) + 55;
+        }
+    </script>
+</body>
+</html>
