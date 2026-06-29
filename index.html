@@ -3,59 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToolnestHQ | الواجهة الجبارة</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;500;700&display=swap');
-        body { font-family: 'Cairo', sans-serif; background: #020617; color: white; overflow-x: hidden; }
-        .glass { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); }
-        .glow { box-shadow: 0 0 20px rgba(59, 130, 246, 0.2); }
-        .nav-btn { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .nav-btn:hover { transform: scale(1.05); background: #3b82f6; }
-        .tool-box { animation: slideUp 0.6s ease-out; }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-    </style>
+    <title>ToolnestHQ - المنصة الاحترافية للأدوات الذكية</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="p-4 md:p-10">
+<body>
 
-    <div class="max-w-4xl mx-auto">
-        <header class="text-center mb-12">
-            <h1 class="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500 mb-2">ToolnestHQ</h1>
-            <p class="text-slate-400">القوة التقنية في متناول يدك</p>
+    <div class="bg-glow blob-1"></div>
+    <div class="bg-glow blob-2"></div>
+
+    <div class="container">
+        <header class="main-header">
+            <h1 class="brand-title">Toolnest<span>HQ</span></h1>
+            <p class="brand-subtitle">القوة التقنية في متناول يدك</p>
         </header>
 
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-            <button onclick="show('pwd')" class="nav-btn glass p-4 rounded-2xl">🔑 كلمات السر</button>
-            <button onclick="show('qr')" class="nav-btn glass p-4 rounded-2xl">📱 الباركود</button>
-            <button onclick="show('conv')" class="nav-btn glass p-4 rounded-2xl">🔄 المحول</button>
-            <button onclick="show('age')" class="nav-btn glass p-4 rounded-2xl">⏳ العمر</button>
-            <button onclick="show('wts')" class="nav-btn glass p-4 rounded-2xl">💬 واتساب</button>
-            <button onclick="show('text')" class="nav-btn glass p-4 rounded-2xl">📝 النصوص</button>
-            <button onclick="show('disc')" class="nav-btn glass p-4 rounded-2xl col-span-2">💰 حاسبة الخصم</button>
-        </div>
+        <main class="tools-grid">
+            
+            <a href="Password.html" class="tool-card">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-key"></i>
+                </div>
+                <span class="tool-name">كلمات السر</span>
+            </a>
 
-        <div id="display-area" class="glass glow p-8 rounded-3xl min-h-[300px] flex items-center justify-center border-t-4 border-blue-500">
-            <div id="pwd" class="tool-box hidden w-full">
-                <h3 class="text-2xl mb-4 font-bold">مولد كلمات السر</h3>
-                <input class="w-full bg-black/50 p-4 rounded-xl border border-white/10" placeholder="اضغط توليد...">
+            <a href="qr.html" class="tool-card">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-qrcode"></i>
+                </div>
+                <span class="tool-name">الباركود</span>
+            </a>
+
+            <a href="converter.html" class="tool-card">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-arrow-rotate-left"></i>
+                </div>
+                <span class="tool-name">المحول</span>
+            </a>
+
+            <a href="age.html" class="tool-card">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-hourglass-half"></i>
+                </div>
+                <span class="tool-name">العمر</span>
+            </a>
+
+            <a href="whatsapp.html" class="tool-card">
+                <div class="icon-wrapper">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </div>
+                <span class="tool-name">واتساب</span>
+            </a>
+
+            <a href="text-counter.html" class="tool-card">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-file-lines"></i>
+                </div>
+                <span class="tool-name">النصوص</span>
+            </a>
+
+            <a href="discount.html" class="tool-card full-width">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-calculator"></i>
+                </div>
+                <span class="tool-name">حاسبة الخصم</span>
+            </a>
+
+        </main>
+
+        <footer class="display-container">
+            <div class="display-content">
+                <i class="fa-solid fa-wand-magic-sparkles display-icon"></i>
+                <h2>اختر أداة للبدء</h2>
+                <p>جميع الأدوات تعمل بشكل مستقل وسريع وآمن تماماً</p>
             </div>
-            <div id="wts" class="tool-box hidden w-full">
-                <h3 class="text-2xl mb-4 font-bold">رابط واتساب</h3>
-                <input class="w-full bg-black/50 p-4 rounded-xl border border-white/10" placeholder="أدخل الرقم هنا...">
-            </div>
-            <div id="welcome" class="text-center text-slate-500">
-                <h2 class="text-2xl">اختر أداة للبدء</h2>
-            </div>
-        </div>
+        </footer>
     </div>
 
-    <script>
-        function show(id) {
-            document.getElementById('welcome').classList.add('hidden');
-            document.querySelectorAll('.tool-box').forEach(t => t.classList.add('hidden'));
-            const selected = document.getElementById(id);
-            selected.classList.remove('hidden');
-        }
-    </script>
 </body>
 </html>
