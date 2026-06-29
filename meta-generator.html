@@ -6,110 +6,163 @@
 
 <title>مولد وسوم الميتا | Meta Tag Generator | ToolnestHQ</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
 <style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Cairo',sans-serif;
+}
+
 body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#0f172a;
-    color:#fff;
+
+background:#09090b;
+color:white;
+padding:30px;
+
 }
 
 .container{
-    max-width:800px;
-    margin:40px auto;
-    padding:20px;
+
+max-width:900px;
+margin:auto;
+
+}
+
+.card{
+
+background:#151515;
+border:1px solid #2d2d2d;
+border-radius:18px;
+padding:25px;
+
 }
 
 h1{
-    text-align:center;
-    margin-bottom:30px;
+
+font-size:34px;
+text-align:center;
+margin-bottom:10px;
+
 }
 
-h1 span{
-    color:#94a3b8;
-    font-size:18px;
+.subtitle{
+
+text-align:center;
+color:#9ca3af;
+margin-bottom:35px;
+
+}
+
+label{
+
+display:block;
+margin-top:18px;
+margin-bottom:8px;
+font-weight:bold;
+
 }
 
 input,textarea{
-    width:100%;
-    padding:15px;
-    margin:12px 0;
-    border:none;
-    border-radius:12px;
-    background:#1e293b;
-    color:#fff;
-    font-size:16px;
-    box-sizing:border-box;
+
+width:100%;
+padding:15px;
+border:none;
+outline:none;
+border-radius:12px;
+background:#222;
+color:white;
+font-size:16px;
+
 }
 
 textarea{
-    min-height:120px;
-    resize:vertical;
+
+height:120px;
+resize:vertical;
+
 }
 
 button{
-    width:100%;
-    padding:15px;
-    border:none;
-    border-radius:12px;
-    background:#2563eb;
-    color:white;
-    font-size:18px;
-    cursor:pointer;
-    transition:.3s;
+
+width:100%;
+margin-top:30px;
+padding:16px;
+border:none;
+border-radius:12px;
+background:#2563eb;
+color:white;
+font-size:18px;
+cursor:pointer;
+transition:.3s;
+
 }
 
 button:hover{
-    background:#1d4ed8;
+
+background:#1d4ed8;
+
 }
 
-pre{
-    background:#111827;
-    margin-top:20px;
-    padding:20px;
-    border-radius:12px;
-    white-space:pre-wrap;
-    overflow:auto;
+#output{
+
+margin-top:30px;
+background:#0f172a;
+padding:20px;
+border-radius:12px;
+white-space:pre-wrap;
+overflow:auto;
+display:none;
+
 }
 
-.copy-btn{
-    margin-top:15px;
-    background:#16a34a;
-}
-
-.copy-btn:hover{
-    background:#15803d;
-}
 </style>
 
 </head>
+
 <body>
 
 <div class="container">
 
-<h1>
-مولد وسوم الميتا
-<br>
-<span>Meta Tag Generator</span>
-</h1>
+<div class="card">
 
-<input id="title" placeholder="عنوان الموقع | Website Title">
+<h1>مولد وسوم الميتا</h1>
 
-<textarea id="description" placeholder="وصف الموقع | Website Description"></textarea>
+<p class="subtitle">
+Meta Tag Generator | ToolnestHQ
+</p>
 
-<input id="keywords" placeholder="الكلمات المفتاحية | Keywords">
+<label>عنوان الموقع | Website Title</label>
 
-<input id="author" placeholder="اسم المؤلف | Author">
+<input id="title">
+
+<label>وصف الموقع | Description</label>
+
+<textarea id="description"></textarea>
+
+<label>الكلمات المفتاحية | Keywords</label>
+
+<input id="keywords">
+
+<label>اسم المؤلف | Author</label>
+
+<input id="author">
 
 <button onclick="generate()">
-إنشاء وسوم الميتا | Generate Meta Tags
+
+إنشاء Meta Tags
+
 </button>
 
 <pre id="output"></pre>
 
-<button class="copy-btn" onclick="copyCode()">
-نسخ الكود | Copy Code
-</button>
+</div>
 
 </div>
 
@@ -117,32 +170,9 @@ pre{
 
 function generate(){
 
-let title=document.getElementById("title").value;
-let description=document.getElementById("description").value;
-let keywords=document.getElementById("keywords").value;
-let author=document.getElementById("author").value;
+document.getElementById("output").style.display="block";
 
-let code=`<title>${title}</title>
-
-<meta name="title" content="${title}">
-<meta name="description" content="${description}">
-<meta name="keywords" content="${keywords}">
-<meta name="author" content="${author}">
-<meta name="robots" content="index, follow">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">`;
-
-document.getElementById("output").textContent=code;
-
-}
-
-function copyCode(){
-
-let text=document.getElementById("output").textContent;
-
-navigator.clipboard.writeText(text);
-
-alert("✅ تم نسخ الكود");
+document.getElementById("output").textContent="الجزء الثاني سنضيفه في الخطوة القادمة...";
 
 }
 
