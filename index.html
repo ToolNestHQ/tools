@@ -3,39 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToolnestHQ - المنصة الاحترافية للأدوات الذكية</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>ToolnestHQ | تجربة تقنية فائقة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --bg-dark: #0f172a; --card-bg: rgba(30, 41, 59, 0.7); --accent: #38bdf8; }
-        body { margin: 0; font-family: 'Cairo', sans-serif; background: var(--bg-dark); color: #fff; min-height: 100vh; }
-        .container { max-width: 1000px; margin: auto; padding: 20px; }
-        .main-header { text-align: center; padding: 40px 0; }
-        .brand-title { font-size: 3rem; margin: 0; color: white; }
-        .brand-title span { color: var(--accent); }
-        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-        .tool-card { background: var(--card-bg); backdrop-filter: blur(10px); padding: 30px; border-radius: 20px; text-decoration: none; color: white; transition: 0.3s; text-align: center; border: 1px solid rgba(255,255,255,0.1); }
-        .tool-card:hover { transform: translateY(-10px); border-color: var(--accent); background: rgba(56, 189, 248, 0.1); }
-        .icon-wrapper { font-size: 2.5rem; margin-bottom: 15px; color: var(--accent); }
+        :root { --primary: #7c3aed; --bg: #020617; --card: rgba(30, 41, 59, 0.4); }
+        body { margin: 0; font-family: 'Cairo', sans-serif; background: var(--bg); color: #fff; min-height: 100vh; overflow-x: hidden; }
+
+        /* خلفية سينمائية */
+        .ambient-glow { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at 50% 50%, #4c1d95 0%, #020617 70%); }
+        .glowing-blob { position: absolute; width: 400px; height: 400px; background: var(--primary); border-radius: 50%; filter: blur(150px); animation: pulse 10s infinite; }
+
+        .container { max-width: 1100px; margin: auto; padding: 50px 20px; position: relative; }
+        
+        header { text-align: center; margin-bottom: 80px; }
+        .brand-title { font-size: 5rem; font-weight: 900; letter-spacing: -2px; margin: 0; text-transform: uppercase; background: linear-gradient(to right, #fff, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        
+        .tool-card { 
+            background: var(--card); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1);
+            padding: 40px; border-radius: 30px; text-decoration: none; color: white;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative; overflow: hidden; display: block;
+        }
+        .tool-card:hover { transform: translateY(-15px) rotate(1deg); border-color: var(--primary); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        .tool-card::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(124,58,237,0.1) 0%, transparent 70%); transition: 0.5s; }
+        .tool-card:hover::before { transform: scale(1.2); }
+
+        .icon-box { font-size: 3.5rem; color: var(--primary); margin-bottom: 25px; }
+        .tool-name { font-size: 1.5rem; font-weight: 700; display: block; margin-bottom: 10px; }
+        .tool-desc { color: #94a3b8; font-size: 0.95rem; }
+
+        @keyframes pulse { 0%, 100% { transform: scale(1) translate(0,0); opacity: 0.2; } 50% { transform: scale(1.2) translate(50px, 50px); opacity: 0.4; } }
     </style>
 </head>
 <body>
+    <div class="ambient-glow"></div>
+    <div class="glowing-blob"></div>
+
     <div class="container">
-        <header class="main-header">
+        <header>
             <h1 class="brand-title">Toolnest<span>HQ</span></h1>
+            <p style="color: #64748b; font-size: 1.2rem;">حيث يلتقي الأداء بالتصميم الأسطوري</p>
         </header>
+
         <main class="tools-grid">
-            <a href="Password.html" class="tool-card"><div class="icon-wrapper"><i class="fa-solid fa-key"></i></div><span class="tool-name">كلمات السر</span></a>
-            <a href="qr.html" class="tool-card"><div class="icon-wrapper"><i class="fa-solid fa-qrcode"></i></div><span class="tool-name">الباركود</span></a>
-            <a href="converter.html" class="tool-card"><div class="icon-wrapper"><i class="fa-solid fa-arrow-rotate-left"></i></div><span class="tool-name">المحول</span></a>
-            <a href="age.html" class="tool-card"><div class="icon-wrapper"><i class="fa-solid fa-hourglass-half"></i></div><span class="tool-name">العمر</span></a>
-            <a href="whatsapp.html" class="tool-card"><div class="icon-wrapper"><i class="fa-brands fa-whatsapp"></i></div><span class="tool-name">واتساب</span></a>
-            <a href="text-counter.html" class="tool-card"><div class="icon-wrapper"><i class="fa-solid fa-file-lines"></i></div><span class="tool-name">النصوص</span></a>
-            <a href="discount.html" class="tool-card"><div class="icon-wrapper"><i class="fa-solid fa-calculator"></i></div><span class="tool-name">حاسبة الخصم</span></a>
-            <a href="meta-generator.html" class="tool-card"><div class="icon-wrapper"><i class="fa-solid fa-code"></i></div><span class="tool-name">Meta Tags</span></a>
-            <a href="social-share.html" class="tool-card"><div class="icon-wrapper"><i class="fa-solid fa-share-nodes"></i></div><span class="tool-name">نشر الموقع</span></a>
+            <a href="Password.html" class="tool-card"><div class="icon-box"><i class="fa-solid fa-key"></i></div><span class="tool-name">مولد كلمات السر</span><span class="tool-desc">تشفير وحماية لحظية</span></a>
+            <a href="qr.html" class="tool-card"><div class="icon-box"><i class="fa-solid fa-qrcode"></i></div><span class="tool-name">صانع الباركود</span><span class="tool-desc">تحويل الروابط لـ QR</span></a>
+            <a href="converter.html" class="tool-card"><div class="icon-box"><i class="fa-solid fa-rotate"></i></div><span class="tool-name">المحول الذكي</span><span class="tool-desc">تحويل وحدات القياس</span></a>
+            <a href="age.html" class="tool-card"><div class="icon-box"><i class="fa-solid fa-hourglass-half"></i></div><span class="tool-name">حاسبة العمر</span><span class="tool-desc">دقة متناهية بالثواني</span></a>
+            <a href="whatsapp.html" class="tool-card"><div class="icon-box"><i class="fa-brands fa-whatsapp"></i></div><span class="tool-name">واتساب سريع</span><span class="tool-desc">مراسلة بدون حفظ رقم</span></a>
+            <a href="text-counter.html" class="tool-card"><div class="icon-box"><i class="fa-solid fa-pen-nib"></i></div><span class="tool-name">مدقق النصوص</span><span class="tool-desc">تحليل دقيق للكلمات</span></a>
         </main>
     </div>
 </body>
